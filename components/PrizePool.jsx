@@ -1,0 +1,42 @@
+import React from 'react'
+
+const PrizePool = () => {
+  return (
+    <section className="py-20 px-4 text-white">
+      <div className="max-w-5xl mx-auto text-center space-y-4">
+        <p className="text-xs font-semibold tracking-[0.35em] uppercase text-gray-300">Prize Pool</p>
+        <h2 className="text-3xl md:text-5xl font-extrabold">Reward Beyond Infinity</h2>
+        <p className="text-sm md:text-base text-gray-300">Celebrating innovation, excellence, and impact.</p>
+      </div>
+
+      <div className="max-w-4xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-3 items-end gap-10 text-center">
+        <div className="space-y-2">
+          <p className="text-xs uppercase text-gray-300">1st Runner-Up</p>
+          <p className="text-3xl md:text-4xl font-extrabold">₹7,000</p>
+        </div>
+
+        <div className="space-y-2">
+          <p className="text-xs uppercase text-gray-300">Winner</p>
+          <p className="text-4xl md:text-6xl font-extrabold">₹10,000</p>
+        </div>
+
+        <div className="space-y-2">
+          <p className="text-xs uppercase text-gray-300">2nd Runner-Up</p>
+          <p className="text-3xl md:text-4xl font-extrabold">₹3,000</p>
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto mt-16">
+        <div className="rounded-2xl border-2 border-cyan-400/70 bg-white/5 backdrop-blur-sm p-8 text-center space-y-3">
+          <p className="text-lg md:text-xl font-semibold">Special Sponsor Award</p>
+          <p className="text-2xl md:text-3xl font-bold">₹1,000</p>
+          <p className="text-sm md:text-base text-gray-300">
+            Awarded to the best project based on a sponsor-provided problem statement (if applicable).
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default PrizePool

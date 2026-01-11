@@ -1,65 +1,123 @@
-import Image from "next/image";
+'use client'
+
+import Image from 'next/image'
+import { useMediaQuery } from 'react-responsive'
+
+import Hero from '@/components/Hero'
+import { AboutUs } from '@/components/AboutUs'
+import Domains from '@/components/Domains'
+import TimelineSection from '@/components/Timeline'
+import PrizePool from '@/components/PrizePool'
+import Rules from '@/components/Rules'
+import Footer from '@/components/Footer'
 
 export default function Home() {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      {/* HERO */}
+      <section id="home">
+        <Hero />
+      </section>
+
+      {/* ABOUT */}
+      <section id="about">
+        <AboutUs />
+      </section>
+
+      {/* DOMAINS + TIMELINE WRAPPER */}
+      <div className="relative">
+
+        {/* DOMAINS SECTION */}
+        <section id="domains" className="relative min-h-screen w-full bg-linear-to-b from-[#06081f] from-10% via-[#0b0f3b] to-[#151a63]">
+          <Image
+            src="/star1.png"
+            fill
+            alt="star background"
+            className="object-cover"
+          />
+          <Domains />
+        </section>
+
+        {/* TIMELINE SECTION */}
+        <section id="event-flow" className="relative min-h-screen w-full bg-linear-to-b from-[#151a63] from-10% via-[#0b0f3b] to-[#06081f]">
+          <Image
+            src="/star1.png"
+            fill
+            alt="star background"
+            className="object-cover"
+          />
+          <TimelineSection />
+        </section>
+
+        {/* 🔵 BOLD LEFT DECORATION (between Domains & Timeline visually) */}
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/bold-left.png"
+          alt="decorative left"
+          width={500}
+          height={500}
           priority
+          className="
+            absolute
+            left-0
+            top-[45%] sm:top-[40%] md:top-1/4
+            w-[260px] sm:w-[220px] md:w-[420px] lg:w-[500px]
+            h-auto
+            pointer-events-none
+            select-none
+            z-20
+            opacity-100
+          "
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+
+        {/* 🔴 BOLD RIGHT DECORATION (BETWEEN TIMELINE & PRIZEPOOL) */}
+        <Image
+          src="/bold-right.png"
+          alt="decorative right"
+          width={500}
+          height={500}
+          priority
+          className="
+            absolute
+            right-0
+            top-[95%] sm:top-[90%] md:top-[90%]
+            w-[240px] sm:w-[200px] md:w-[420px] lg:w-[500px]
+            h-auto
+            pointer-events-none
+            select-none
+            z-20
+            opacity-60
+          "
+        />
+      </div>
+
+      {/* PRIZE POOL */}
+      <section id="prize-pool" className="relative h-screen w-full bg-linear-to-b from-[#06081f] from-10% via-[#0b0f3b] to-[#151a63]">
+        <Image
+          src="/star1.png"
+          fill
+          alt="star background"
+          className="object-cover"
+        />
+        <PrizePool />
+      </section>
+
+      {/* RULES */}
+      <section id="rules" className="relative min-h-screen w-full bg-linear-to-b from-[#151a63] from-10% via-[#0b0f3b] to-[#06081f]">
+        <Image
+          src="/star1.png"
+          fill
+          alt="star background"
+          className="object-cover pointer-events-none"
+        />
+        <Rules />
+      </section>
+
+      {/* FOOTER */}
+      <section id="contact">
+        <Footer />
+      </section>
+    </>
+  )
 }
