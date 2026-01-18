@@ -2,27 +2,20 @@
 export const timeline = [
   {
     date: "10th Feb",
-    title: "Kickoff",
-    description:
-      "Official launch of INNOV8 TMRRW with problem statements released for participants.",
-    side: "right",
-  },
-  {
-    date: "11th Feb",
     title: "Problem Statement (PS)",
     description:
       "Release of problem statements across multiple domains. Teams begin ideation and research.",
     side: "left",
   },
   {
-    date: "12th Feb",
+    date: "11th Feb",
     title: "Submission of PS",
     description:
       "Abstract submission by 2:00 PM per team. Shortlisting based on innovation and feasibility.",
     side: "right",
   },
   {
-    date: "13th Feb",
+    date: "12 th Feb",
     title: "Shortlisting Announcement",
     description:
       "Shortlisted teams announced at 5 PM. Guidelines and next steps shared.",
