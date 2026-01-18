@@ -18,9 +18,24 @@ export default function Footer() {
 
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  )
+
+  /* ---------------- Device breakpoint ---------------- */
+  useEffect(() => {
+    const checkIsMobile = () => window.innerWidth <= 768
+    const handleResize = () => setIsMobile(checkIsMobile())
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   /* ---------------- Mouse ---------------- */
   useEffect(() => {
+    if (isMobile) return
+
     const handleMouseMove = (e) => {
       setMouse({
         x: (e.clientX / window.innerWidth) * 2 - 1,
@@ -30,17 +45,20 @@ export default function Footer() {
 
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+  }, [isMobile])
 
   /* ---------------- Scroll + Parallax ---------------- */
   useGSAP(() => {
+    if (isMobile) return
+
     const lenis = new Lenis({ smooth: true })
+    const ticker = (t) => lenis.raf(t * 1000)
     lenis.on('scroll', ScrollTrigger.update)
 
-    gsap.ticker.add((t) => lenis.raf(t * 1000))
+    gsap.ticker.add(ticker)
     gsap.ticker.lagSmoothing(0)
 
-    ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
       trigger: footerRef.current,
       start: 'top bottom',
       end: 'bottom bottom',
@@ -64,7 +82,13 @@ export default function Footer() {
         })
       },
     })
-  }, [])
+
+    return () => {
+      trigger.kill()
+      gsap.ticker.remove(ticker)
+      lenis.destroy()
+    }
+  }, [isMobile])
 
   return (
     <footer ref={footerRef} className="footer-root">
@@ -88,79 +112,81 @@ export default function Footer() {
       </div>
 
       {/* ---------------- CANVAS ---------------- */}
-      <div className="footer-canvas" aria-hidden>
-        <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
-          <ambientLight intensity={1.4} />
-          <directionalLight position={[10, 10, 5]} intensity={2} />
-          <pointLight position={[-10, -10, 10]} intensity={0.5} />
-          <Astronaut1
-            mouse={mouse}
-            scrollProgress={scrollProgress}
-          />
-        </Canvas>
-      </div>
+      {!isMobile && (
+        <div className="footer-canvas" aria-hidden>
+          <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
+            <ambientLight intensity={1.4} />
+            <directionalLight position={[10, 10, 5]} intensity={2} />
+            <pointLight position={[-10, -10, 10]} intensity={0.5} />
+            <Astronaut1
+              mouse={mouse}
+              scrollProgress={scrollProgress}
+            />
+          </Canvas>
+        </div>
+      )}
 
       {/* ---------------- CONTENT ---------------- */}
       <div
-  ref={contentRef}
-  className="footer-content"
-  style={{ transform: 'translateY(-45%)' }}
->
-  <div className="footer-row">
+        ref={contentRef}
+        className="footer-content"
+        style={{ transform: isMobile ? 'none' : 'translateY(-45%)' }}
+      >
+        <div className="footer-row">
 
-    {/* Brand */}
-    <div>
-      <h2 className="title text-[3rem] md:text-[4rem] ">INNOV8 TMRRW</h2>
-      <p className="tag">Build. Beyond. Infinity.</p>
-      <p className="meta">
-        A national-level hackathon organized by <br />
-        Computer Engineering Students’ Association (CESA), <br />
-        Vidyalankar Institute of Technology, Mumbai
-      </p>
-    </div>
+          {/* Brand */}
+          <div>
+            <h2 className="title text-[3rem] md:text-[4rem] ">INNOV8 TMRRW</h2>
+            <p className="tag">Build. Beyond. Infinity.</p>
+            <p className="meta">
+              A national-level hackathon organized by <br />
+              Computer Engineering Students’ Association (CESA), <br />
+              Vidyalankar Institute of Technology, Mumbai
+            </p>
+          </div>
 
-    {/* Event Info */}
-    <div>
-      <h3>EVENT INFO</h3>
-      <p>10–14 February 2026</p>
-      <p>Hybrid Mode</p>
-      <p>VIT Mumbai</p>
-    </div>
+          {/* Event Info */}
+          <div>
+            <h3>EVENT INFO</h3>
+            <p>10–14 February 2026</p>
+            <p>Hybrid Mode</p>
+            <p>VIT Mumbai</p>
+          </div>
 
-    {/* Contact */}
-    <div>
-      <h3>CONTACT</h3>
-      <p>Email: cesa.vidyalankar@gmail.com</p>
-      <p>Swaroop – +91 70210 85649</p>
-      <p>Tejas – +91 91738 94631</p>
-      <p>Bhavika – +91 81890 97092</p>
-      <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-        <a href="https://instagram.com/cesa_vit" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-100 transition-opacity">
-          <FaInstagram size={22} color="rgba(255,255,255,0.6)" />
-        </a>
+          {/* Contact */}
+          <div>
+            <h3>CONTACT</h3>
+            <p>Email: cesa.vidyalankar@gmail.com</p>
+            <p>Swaroop – +91 70210 85649</p>
+            <p>Tejas – +91 91738 94631</p>
+            <p>Bhavika – +91 81890 97092</p>
+            <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+              <a href="https://instagram.com/cesa_vit" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-100 transition-opacity">
+                <FaInstagram size={22} color="rgba(255,255,255,0.6)" />
+              </a>
 
-        <a href="https://youtube.com/@cesavit" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:opacity-100 transition-opacity">
-          <FaYoutube size={26} color="rgba(255,255,255,0.6)" />
-        </a>
+              <a href="https://youtube.com/@cesavit" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:opacity-100 transition-opacity">
+                <FaYoutube size={26} color="rgba(255,255,255,0.6)" />
+              </a>
 
-        <a href="https://linkedin.com/company/cesa-vit" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-100 transition-opacity">
-          <FaLinkedin size={22} color="rgba(255,255,255,0.6)" />
-        </a>
+              <a href="https://linkedin.com/company/cesa-vit" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-100 transition-opacity">
+                <FaLinkedin size={22} color="rgba(255,255,255,0.6)" />
+              </a>
 
-        <a href="mailto:cesa.vidyalankar@gmail.com" aria-label="Email" className="hover:opacity-100 transition-opacity">
-          <MdEmail size={24} color="rgba(255,255,255,0.6)" />
-        </a>
+              <a href="mailto:cesa.vidyalankar@gmail.com" aria-label="Email" className="hover:opacity-100 transition-opacity">
+                <MdEmail size={24} color="rgba(255,255,255,0.6)" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="footer-bottom">
+          <span>© 2026 CESA, VIT Mumbai. All rights reserved.</span>
+          <span>Designed & Developed by CESA Tech Team</span>
+        </div>
       </div>
-    </div>
-
-  </div>
-
-  {/* Footer Bottom */}
-  <div className="footer-bottom">
-    <span>© 2026 CESA, VIT Mumbai. All rights reserved.</span>
-    <span>Designed & Developed by CESA Tech Team</span>
-  </div>
-</div>
 
 
       {/* ---------------- STYLES ---------------- */}

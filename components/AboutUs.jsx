@@ -12,15 +12,14 @@ import { Suspense } from 'react'
 export function AboutUs() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
-  // 🔧 Responsive tuning
-  const scale = isMobile ? 0.99 : 1.1
-  const dpr = isMobile ? 0.75 : 1
-  const cameraZ = isMobile ? 5 : 6
-  const fov = isMobile ? 30 : 28
+  // Desktop-only tuning
+  const scale = 1.1
+  const dpr = 1
+  const cameraZ = 6
+  const fov = 28
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-black py-20 lg:py-28">
-
       {/* 🌌 STAR BACKGROUND */}
       <Image
         src="/invert.png"
@@ -31,7 +30,6 @@ export function AboutUs() {
       />
 
       <div className="relative z-10 max-w-[90vw] lg:max-w-[85vw] mx-auto px-4 lg:px-6 font-space-grotesk">
-
         {/* HEADER */}
         <div className="text-center mb-14">
           <p className="uppercase tracking-widest text-sm text-gray-400 mb-3">
@@ -44,7 +42,6 @@ export function AboutUs() {
 
         {/* CONTENT */}
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">
-
           {/* TEXT */}
           <div className="text-white max-w-xl mx-auto lg:mx-0">
             <p className="text-gray-300 leading-relaxed mb-6">
@@ -61,18 +58,9 @@ export function AboutUs() {
             {/* STATS */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                {
-                  title: '24+ Hours',
-                  desc: 'Non-stop innovation',
-                },
-                {
-                  title: 'Multiple Domains',
-                  desc: 'Real-world problems',
-                },
-                {
-                  title: 'Mentorship & Prizes',
-                  desc: 'Guidance & rewards',
-                },
+                { title: '24+ Hours', desc: 'Non-stop innovation' },
+                { title: 'Multiple Domains', desc: 'Real-world problems' },
+                { title: 'Mentorship & Prizes', desc: 'Guidance & rewards' },
               ].map((item, i) => (
                 <div key={i} className="relative rounded-lg p-4">
                   <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-[#6e56cf] to-[#c084fc]" />
@@ -86,36 +74,42 @@ export function AboutUs() {
             </div>
           </div>
 
-          {/* 🌍 PLANET */}
-          <div className="relative h-[360px] sm:h-[420px] lg:h-[700px]">
-            <Canvas
-              dpr={dpr}
-              camera={{ position: [0, 1, cameraZ], fov }}
-              gl={{
-                alpha: true,
-                antialias: !isMobile,
-                outputColorSpace: THREE.SRGBColorSpace,
-                toneMapping: THREE.ACESFilmicToneMapping,
-                toneMappingExposure: 1,
-              }}
-              onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
-            >
-              <Suspense fallback={null}>
-                <ambientLight intensity={isMobile ? 0.45 : 0.6} />
-                <directionalLight
-                  position={[5, 3, 5]}
-                  intensity={isMobile ? 0.9 : 1.2}
-                />
+          {/* 🌍 VISUAL */}
+          <div className="relative h-[320px] sm:h-[380px] mix-b-lighten lg:h-[700px] flex items-center justify-center">
+            {/* 🔹 MOBILE → STATIC IMAGE */}
+            {isMobile && (
+              <Image
+                src="/planet1.png" // 🔁 use exported render of your planet
+                alt="Planet Illustration"
+                width={420}
+                height={420}
+                priority
+                className="object-contain opacity-90 m-lighten"
+              />
+            )}
 
-                <Float
-                  speed={isMobile ? 0.3 : 0.6}
-                  rotationIntensity={0}
-                  floatIntensity={isMobile ? 0.3 : 0.5}
-                >
-                  <Planet scale={scale} />
-                </Float>
+            {/* 🔹 DESKTOP → 3D PLANET */}
+            {!isMobile && (
+              <Canvas
+                dpr={dpr}
+                camera={{ position: [0, 1, cameraZ], fov }}
+                gl={{
+                  alpha: true,
+                  antialias: true,
+                  outputColorSpace: THREE.SRGBColorSpace,
+                  toneMapping: THREE.ACESFilmicToneMapping,
+                  toneMappingExposure: 1,
+                }}
+                onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
+              >
+                <Suspense fallback={null}>
+                  <ambientLight intensity={0.6} />
+                  <directionalLight position={[5, 3, 5]} intensity={1.2} />
 
-                {!isMobile && (
+                  <Float speed={0.6} rotationIntensity={0} floatIntensity={0.5}>
+                    <Planet scale={scale} />
+                  </Float>
+
                   <EffectComposer>
                     <Bloom
                       intensity={0}
@@ -123,9 +117,9 @@ export function AboutUs() {
                       luminanceSmoothing={0.9}
                     />
                   </EffectComposer>
-                )}
-              </Suspense>
-            </Canvas>
+                </Suspense>
+              </Canvas>
+            )}
           </div>
         </div>
       </div>
