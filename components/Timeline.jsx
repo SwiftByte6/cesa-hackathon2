@@ -11,13 +11,14 @@ export default function TimelineSection() {
   const timelineRefs = useRef([]);
 
   useEffect(() => {
-    timelineRefs.current.forEach((item, index) => {
-      if (!item) return;
+    timelineRefs.current.forEach((content, index) => {
+      if (!content) return;
 
       const isLeft = timeline[index].side === "left";
-      
+      const triggerEl = content.closest(".timeline-item");
+
       gsap.fromTo(
-        item,
+        content,
         {
           x: isLeft ? -100 : 100,
           opacity: 0,
@@ -28,7 +29,7 @@ export default function TimelineSection() {
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: item,
+            trigger: triggerEl || content,
             start: "top 80%",
             end: "top 20%",
             toggleActions: "play none none none",
@@ -66,12 +67,12 @@ export default function TimelineSection() {
             return (
               <div
                 key={index}
-                ref={(el) => (timelineRefs.current[index] = el)}
-                className={`relative flex items-center ${isLeft ? "justify-start" : "justify-end"
+                className={`timeline-item relative flex items-center ${isLeft ? "justify-start" : "justify-end"
                   }`}
               >
                 {/* Content */}
                 <div
+                  ref={(el) => (timelineRefs.current[index] = el)}
                   className={`w-full md:w-[45%] text-left pl-16 ${isLeft ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
                     }`}
                 >

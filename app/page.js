@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useMediaQuery } from 'react-responsive'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from "@gsap/react";
+
 
 import Hero from '@/components/Hero'
 import { AboutUs } from '@/components/AboutUs'
@@ -24,50 +26,134 @@ export default function Home() {
   const leftDecoRef = useRef(null)
   const rightDecoRef = useRef(null)
   const bgWrapperRef = useRef(null)
+  const textRef = useRef(null)
 
-useEffect(() => {
-  if (isMobile) return
-  if (!bgWrapperRef.current) return
+  useEffect(() => {
+    if (isMobile) return
+    if (!bgWrapperRef.current) return
 
-  const trigger = ScrollTrigger.create({
-    trigger: bgWrapperRef.current,
-    start: 'top bottom',
-    end: 'bottom top',
-    scrub: true,
-    // markers:true,
-    onUpdate: (self) => {
-      const p = self.progress
+    const trigger = ScrollTrigger.create({
+      trigger: bgWrapperRef.current,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: true,
+      // markers:true,
+      onUpdate: (self) => {
+        const p = self.progress
 
-      // ☁️ Cloud 1 (foreground → moves more)
-      gsap.set(cloud1Ref.current, {
-        y: -(650 * p),
-      })
+        // ☁️ Cloud 1 (foreground → moves more)
+        gsap.set(cloud1Ref.current, {
+          y: -(650 * p),
+        })
 
-      // ☁️ Cloud 2 (background → moves less)
-      gsap.set(cloud2Ref.current, {
-        y: -(840 * p),
-      })
+        // ☁️ Cloud 2 (background → moves less)
+        gsap.set(cloud2Ref.current, {
+          y: -(840 * p),
+        })
 
-      // 🐉 Left Decoration
-      gsap.set(leftDecoRef.current, {
-        y: -180 * p,
-      })
+        // 🐉 Left Decoration
+        gsap.set(leftDecoRef.current, {
+          y: -180 * p,
+        })
 
-      // 🐉 Right Decoration
-      gsap.set(rightDecoRef.current, {
-        y: -220 * p,
-      })
-    },
-  })
+        // 🐉 Right Decoration
+        gsap.set(rightDecoRef.current, {
+          y: -220 * p,
+        })
+      },
+    })
 
-  return () => trigger.kill()
+    return () => trigger.kill()
 
-}, [isMobile])
+  }, [isMobile])
+
+
+  // useGSAP(() => {
+  //   const tl = gsap.timeline();
+
+  //   tl.from(textRef.current, {
+  //     opacity: 0,
+  //     duration: 1.3,
+  //     ease: "power2.out"
+  //   })
+  //   tl.to(textRef.current, {
+  //     letterSpacing: "-180px",
+  //     duration: 0.6,
+  //     opacity:0,
+  //     scale:0.8,
+  //     ease: "power2.inOut",
+  //     onComplete: () => {
+  //       textRef.current.textContent = "C"
+  //     }
+  //   })
+  //       tl.to(textRef.current, {
+  //     duration: 0.6,
+  //     opacity:1,
+  //     ease: "power2.inOut",
+  //     delay: -0.3,
+  //     onComplete: () => {
+  //       textRef.current.textContent = "C"
+  //     }
+  //   })
+
+  //   tl.to(".vi-mask-group", {
+  //     rotate: 10,
+  //     duration: 2,
+  //     ease: "Power4.easeInOut",
+  //     transformOrigin: "50% 50%",
+  //   }).to(".vi-mask-group", {
+  //     scale: 10,
+  //     duration: 2,
+  //     delay: -1.8,
+  //     ease: "Expo.easeInOut",
+  //     transformOrigin: "50% 50%",
+  //     opacity: 0,
+  //     onUpdate: function () {
+  //       if (this.progress() >= 0.9) {
+  //         document.querySelector(".svg").remove();
+  //         setShowContent(true);
+  //         this.kill();
+  //       }
+  //     },
+  //   });
+  // });
 
 
 
   return (
     <>
+      {/* <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-screen overflow-hidden bg-[#000]">
+        <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <mask id="viMask">
+              <rect width="100%" height="100%" fill="black" />
+              <g className="vi-mask-group">
+                <text
+                  ref={textRef}
+                  x="50%"
+                  y="50%"
+                  fontSize="250"
+                  textAnchor="middle"
+                  fill="white"
+                  dominantBaseline="middle"
+                  fontFamily="Arial Black"
+                >
+                  CESA
+                </text>
+              </g>
+            </mask>
+          </defs>
+          <image
+            href="./back1.png"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="xMidYMid slice"
+            mask="url(#viMask)"
+          />
+        </svg>
+      </div> */}
+
+
       <section id="home">
         <Hero />
       </section>
