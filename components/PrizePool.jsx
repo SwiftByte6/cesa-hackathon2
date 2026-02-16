@@ -1,8 +1,20 @@
+import Image from 'next/image'
 import React from 'react'
 
 const PrizePool = () => {
   return (
-    <section className="py-20 px-4 text-white">
+    <section className="py-20 px-4 text-white  relative">
+      <div className="pointer-events-none absolute -bottom-6 -left-[5%] md:block md:-bottom-10 lg:-bottom-12 xl:-bottom-14">
+        <Image
+          src={'/prize.png'}
+          width={560}
+          height={560}
+          alt='character image'
+          className="h-auto w-[220px] md:w-[360px] lg:w-[440px] xl:w-[520px]"
+          priority
+        />
+      </div>
+     
       <div className="max-w-5xl mx-auto text-center space-y-4">
         <p className="text-xs font-semibold tracking-[0.35em] uppercase text-gray-300">Prize Pool</p>
         <h2 className="text-3xl md:text-5xl font-extrabold">Reward Beyond Infinity</h2>
@@ -27,7 +39,7 @@ const PrizePool = () => {
       </div>
 
       <div className="max-w-3xl mx-auto mt-16">
-        <div className="rounded-2xl border-2 border-cyan-400/70 bg-white/5 backdrop-blur-sm p-8 text-center space-y-3">
+        <div className="rounded-2xl border-2 border-white/70 bg-white/5 backdrop-blur-sm p-8 text-center space-y-3">
           <p className="text-lg md:text-xl font-semibold">Special Sponsor Award</p>
           <p className="text-2xl md:text-3xl font-bold">₹1,000</p>
           <p className="text-sm md:text-base text-gray-300">

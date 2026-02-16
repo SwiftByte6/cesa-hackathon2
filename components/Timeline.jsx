@@ -1,8 +1,43 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { timeline } from "@/data/Timeline";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function TimelineSection() {
+  const timelineRefs = useRef([]);
+
+  useEffect(() => {
+    timelineRefs.current.forEach((item, index) => {
+      if (!item) return;
+
+      const isLeft = timeline[index].side === "left";
+      
+      gsap.fromTo(
+        item,
+        {
+          x: isLeft ? -100 : 100,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  }, []);
+
   return (
     <section className="relative py-24 px-6  text-white overflow-hidden">
       {/* Heading */}
@@ -31,6 +66,7 @@ export default function TimelineSection() {
             return (
               <div
                 key={index}
+                ref={(el) => (timelineRefs.current[index] = el)}
                 className={`relative flex items-center ${isLeft ? "justify-start" : "justify-end"
                   }`}
               >

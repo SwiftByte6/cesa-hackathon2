@@ -24,12 +24,27 @@ html {
   }
 }
 
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  font-family: var(--font-ringm), 'Space Grotesk', sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.fixed-bg-sections {
+  background-image: url("/star1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  .fixed-bg-sections {
+    background-attachment: scroll;
+  }
 }
 
 .marquee-fade {

@@ -64,7 +64,7 @@ export default function MarqueeText() {
 /* --------- Components --------- */
 
 const baseText =
-  'INNOV8 TMRW • NATIONAL LEVEL HACKATHON • 36 HOURS • VIT MUMBAI • BUILD • BEYOND • INFINITY •';
+  'INNOV8 TMRW • NATIONAL LEVEL HACKATHON •CESA X• VIT MUMBAI • BUILD • BEYOND • INFINITY •';
 
 function MarqueeTextBlock() {
   return (

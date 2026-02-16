@@ -1,47 +1,43 @@
 // data/domains.ts
+
 export const domains = [
   {
     id: "01",
-    title: "Healthcare & Well-Being",
+    title: "AeroGuardian 2026",
+    subtitle: "Reimagining Aviation Safety Through Intelligent Systems",
     description:
-      "Technology-driven solutions to improve patient care, mental and physical well-being, healthcare accessibility, disease prevention, and community health monitoring.",
+      "Design a comprehensive, technology-driven framework that strengthens aviation safety across prevention, in-flight assistance, and coordinated emergency response. The system should move beyond reactive investigation toward proactive risk anticipation and structured emergency orchestration within real aviation ecosystems.",
     tags: [
-      "Patient Care",
-      "Mental Health",
-      "Preventive Healthcare",
+      "Aviation Safety",
+      "Risk Prediction",
+      "Emergency Coordination",
+      "Intelligent Systems",
     ],
   },
   {
     id: "02",
-    title: "Agriculture & Food Systems",
+    title: "FarmFlow 2026",
+    subtitle: "Intelligent Farmer Inventory & Market Stability System",
     description:
-      "Innovative solutions for smart farming, FoodTech, sustainable agriculture practices, food supply chain optimization, waste reduction, and efficient use of natural resources.",
+      "Conceptualize a structured, technology-enabled framework that enhances inventory transparency, improves price intelligence, and strengthens coordination between farmers, warehouses, and markets to reduce post-harvest losses and improve income stability.",
     tags: [
-      "Smart Farming",
-      "FoodTech",
-      "Sustainability",
+      "AgriTech",
+      "Market Intelligence",
+      "Supply Chain Optimization",
+      "Rural Innovation",
     ],
   },
   {
     id: "03",
-    title: "Safety & Public Welfare",
+    title: "CardioTrack 2026",
+    subtitle: "Post-Heart Attack Recovery & Relapse Monitoring Intelligence",
     description:
-      "Technology-enabled solutions designed to enhance personal safety, public security, disaster preparedness, and the overall well-being of communities.",
+      "Develop a structured recovery intelligence framework that bridges hospital discharge and long-term rehabilitation through coordinated monitoring, medication adherence tracking, and relapse risk identification within scalable healthcare ecosystems.",
     tags: [
-      "Public Safety",
-      "Disaster Management",
-      "Community Welfare",
-    ],
-  },
-  {
-    id: "04",
-    title: "Open Innovation",
-    description:
-      "Creative and interdisciplinary solutions beyond predefined domains, encouraging experimentation, originality, and impactful innovation across diverse real-world problem spaces.",
-    tags: [
-      "Creativity",
-      "Experimentation",
-      "Real-World Impact",
+      "Healthcare Monitoring",
+      "Relapse Prevention",
+      "Digital Health",
+      "Clinical Intelligence",
     ],
   },
 ];

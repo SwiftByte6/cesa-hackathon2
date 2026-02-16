@@ -1,99 +1,111 @@
 'use client'
 
 import React, { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
-    const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Domains', href: '#domains' },
-        { name: 'Event-Flow', href: '#event-flow' },
-        { name: 'Prize-Pool', href: '#prize-pool' },
-        { name: 'Rules&Eligibility', href: '#rules' },
-        { name: 'Sponsor/Ship', href: '#sponsors' },
-        { name: 'Contact', href: '#contact' },
-    ]
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Domains', href: '#domains' },
+    { name: 'Event-Flow', href: '#event-flow' },
+    { name: 'Prize-Pool', href: '#prize-pool' },
+    { name: 'Rules & Eligibility', href: '#rules' },
+    { name: 'Contact', href: '#contact' },
+  ]
 
-    return (
-        <nav className="fixed top-0 left-0 right-0 z-50  backdrop-blur-sm ">
-            <div className="max-w-[95%] mx-auto px-6 py-4">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <div className="flex-shrink-0">
-                        <Link href="/" className="flex items-center">
-                            <div className="text-white text-2xl font-bold tracking-wider">
-                                CESA
-                            </div>
-                        </Link>
-                    </div>
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      <div className="max-w-[95%] mx-auto px-6 py-5 flex items-center justify-between">
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center space-x-8">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200 whitespace-nowrap"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                    </div>
+        {/* Logo */}
+        <Link href="/" className="relative z-50 flex items-center">
+          <Image
+            src="/LogoCesa 1.png"
+            alt="CESA Logo"
+            width={120}
+            height={50}
+            className="h-12 w-auto"
+            priority
+          />
+        </Link>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="lg:hidden text-white focus:outline-none"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            {isMenuOpen ? (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            ) : (
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            )}
-                        </svg>
-                    </button>
-                </div>
+        {/* Desktop Nav */}
+    <div className="hidden lg:flex items-center space-x-8">
+  {navLinks.map((link) => (
+    <Link
+      key={link.name}
+      href={link.href}
+      className="relative group text-sm font-medium tracking-wide"
+    >
+      {/* Text with left-to-right color fill */}
+      <span className="relative z-10 block text-white transition-colors duration-300 group-hover:text-[#FFB86A]">
+        {link.name}
+      </span>
 
-                {/* Mobile Menu */}
-                {isMenuOpen && (
-                    <div className="lg:hidden mt-4 pb-4">
-                        <div className="flex flex-col space-y-4">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="text-white/90 hover:text-white text-sm font-medium transition-colors duration-200"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
-        </nav>
-    )
+      {/* Animated Underline */}
+      <span
+        className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[#FFB86A]
+        transition-all duration-300 ease-out
+        group-hover:w-full"
+      />
+    </Link>
+  ))}
+</div>
+
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="lg:hidden flex flex-col justify-center items-center w-8 h-8 z-50"
+        >
+          <span
+            className={`block w-6 h-[2px] bg-white transition-all duration-300 ${
+              isOpen ? 'rotate-45 translate-y-[6px]' : ''
+            }`}
+          />
+          <span
+            className={`block w-6 h-[2px] bg-white my-1 transition-all duration-300 ${
+              isOpen ? 'opacity-0' : ''
+            }`}
+          />
+          <span
+            className={`block w-6 h-[2px] bg-white transition-all duration-300 ${
+              isOpen ? '-rotate-45 -translate-y-[6px]' : ''
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* ===== Mobile Fullscreen Menu ===== */}
+      <div
+        className={`fixed inset-0 bg-[#1f2029] flex flex-col items-center justify-center transition-all duration-700 ease-in-out lg:hidden ${
+          isOpen
+            ? 'opacity-100 scale-100'
+            : 'opacity-0 scale-95 pointer-events-none'
+        }`}
+      >
+        {navLinks.map((link, index) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            onClick={() => setIsOpen(false)}
+            className={`text-white text-4xl font-extrabold uppercase tracking-wider mb-8 transition-all duration-500 ${
+              isOpen
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+            }`}
+            style={{ transitionDelay: `${index * 100}ms` }}
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
+    </nav>
+  )
 }
 
 export default Navbar

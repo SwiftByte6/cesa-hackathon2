@@ -95,24 +95,25 @@ export default function Footer() {
       {/* ---------------- BACKGROUND ---------------- */}
       <div className="parallax-layer bg-layer">
         <Image
-          src="/backgroundwave.png"
+          src="/footer.png"
           fill
           alt="background"
           className="object-cover opacity-70 md:opacity-80"
         />
       </div>
+      <div className="absolute inset-0 bg-black/40" />
 
-      <div className="parallax-layer stars-layer">
+      {/* <div className="parallax-layer stars-layer">
         <Image
           src="/star.jpg"
           fill
           alt="stars"
           className="object-cover opacity-30"
         />
-      </div>
+      </div> */}
 
       {/* ---------------- CANVAS ---------------- */}
-      {!isMobile && (
+      {isMobile && (
         <div className="footer-canvas" aria-hidden>
           <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
             <ambientLight intensity={1.4} />
@@ -148,7 +149,7 @@ export default function Footer() {
           {/* Event Info */}
           <div>
             <h3>EVENT INFO</h3>
-            <p>10–14 February 2026</p>
+            <p>16 Feb – 7 March 2026</p>
             <p>Hybrid Mode</p>
             <p>VIT Mumbai</p>
           </div>
@@ -157,8 +158,7 @@ export default function Footer() {
           <div>
             <h3>CONTACT</h3>
             <p>Email: cesa.vidyalankar@gmail.com</p>
-            <p>Swaroop – +91 70210 85649</p>
-            <p>Tejas – +91 91738 94631</p>
+            <p>Riya – +91 91360 28906</p>
             <p>Bhavika – +91 81890 97092</p>
             <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
               <a href="https://instagram.com/cesa_vit" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-100 transition-opacity">

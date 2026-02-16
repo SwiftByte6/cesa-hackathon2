@@ -9,32 +9,45 @@ import Sponsership from './Sponsership'
 gsap.registerPlugin(ScrollTrigger)
 
 const rules = [
-  'Each team must consist of 2 to 4 participants.',
-  'Teams may be inter-departmental and inter-year.',
-  'Pre-built projects are strictly prohibited.',
-  'All development activity will be monitored throughout the hackathon.',
-  'Participants must adhere to ethical coding practices and fair-play standards.',
-]
-
+  "Teams must consist of 2–4 members and complete registration and submission within the specified deadlines in the prescribed format.",
+  "All submissions must be original. Plagiarism, copied content, or unfair practices will result in immediate disqualification.",
+  "Entries will be evaluated solely on innovation, feasibility, impact, and clarity. The judges’ decisions will be final and binding.",
+  "Shortlisted teams must mandatorily attend the mentoring-cum-evaluation round and present their solution on D-Day.",
+  "All participants are expected to maintain professional, respectful, and ethical conduct throughout the hackathon.",
+];
 const faqs = [
   {
-    question: 'Who can participate in INNOV8 TMMRW?',
+    question: "Who can participate in Hackfest?",
     answer:
-      'The hackathon is open to all eligible students who meet the team composition criteria.',
+      "Hackfest is open to all undergraduate students with some technical knowledge. Participants must register in teams of 2–4 members.",
   },
   {
-    question: 'Can we participate with an existing idea?',
-    answer: 'Fresh builds only. Bring the idea, build during the hackathon.',
+    question: "Is there a registration fee?",
+    answer:
+      "Yes, a participation fee of ₹200 per team is applicable only for teams shortlisted for Round 2.",
   },
   {
-    question: 'Is cross-department or cross-year participation allowed?',
-    answer: 'Yes. Mixed teams are encouraged to foster diverse perspectives.',
+    question: "What needs to be submitted for Round 1?",
+    answer:
+      "Teams must submit an Abstract or PPT in the prescribed format before the deadline.",
   },
   {
-    question: 'Will mentorship be provided during the event?',
-    answer: 'Yes. Mentors will be available during checkpoints and office hours.',
+    question: "How are teams shortlisted?",
+    answer:
+      "Submissions are evaluated based on innovation, feasibility, clarity, relevance, and impact potential.",
   },
-]
+  {
+    question: "What happens after Round 1 results?",
+    answer:
+      "Shortlisted teams advance to Round 2 and receive new problem statements for further development.",
+  },
+  {
+    question: "Is the mentoring session compulsory?",
+    answer:
+      "Yes, the mentoring session is mandatory for all shortlisted teams as it serves as a progress evaluation round.",
+  },
+];
+
 
 const FAQItem = ({ item, index, isOpen, onToggle }) => {
   const contentRef = useRef(null)
@@ -70,7 +83,7 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
         ref={contentRef}
         className="overflow-hidden h-0 opacity-0"
       >
-        <p className="mt-4 bg-[#00bed3]/70 text-sm md:text-base text-black p-2">
+        <p className="mt-4 bg-white/20 rounded-2xl text-sm md:text-base text-white/80 p-2">
           {item.answer}
         </p>
       </div>
@@ -158,7 +171,7 @@ const Rules = () => {
         </div>
       </div>
 
-      <Sponsership />
+      {/* <Sponsership /> */}
     </section>
   )
 }

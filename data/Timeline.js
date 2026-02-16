@@ -1,38 +1,39 @@
 // data/timeline.ts
+
 export const timeline = [
   {
-    date: "10th Feb",
-    title: "Problem Statement (PS)",
+    date: "16th Feb",
+    title: "Problem Statement Release",
     description:
-      "Release of problem statements across multiple domains. Teams begin ideation and research.",
+      "Common Problem Statements for Round 1 released during the official unveiling. Registrations open and teams begin ideation.",
     side: "left",
   },
   {
-    date: "11th Feb",
-    title: "Submission of PS",
+    date: "26th / 28th Feb",
+    title: "Submission of Round 1",
     description:
-      "Abstract submission by 2:00 PM per team. Shortlisting based on innovation and feasibility.",
+      "Final deadline to submit the abstract or PPT in the prescribed format. Submissions evaluated on innovation, feasibility, and clarity.",
     side: "right",
   },
   {
-    date: "12 th Feb",
-    title: "Shortlisting Announcement",
+    date: "2nd March",
+    title: "Round 1 Results – Shortlisting Announcement",
     description:
-      "Shortlisted teams announced at 5 PM. Guidelines and next steps shared.",
+      "Selected teams announced. Shortlisted teams advance to Round 2 and receive new, domain-specific problem statements.",
     side: "left",
   },
   {
-    date: "13th Feb",
-    title: "Mentorship Day",
+    date: "5th March",
+    title: "Mentoring & Evaluation",
     description:
-      "Mentoring sessions conducted by college faculty focusing on technical approach and feasibility.",
+      "Online mentoring session conducted. This stage also serves as a progress evaluation round for shortlisted teams.",
     side: "right",
   },
   {
-    date: "14th Feb",
-    title: "Final Pitching & Evaluation (Offline)",
+    date: "7th March",
+    title: "Grand Finale (D-Day)",
     description:
-      "On-campus final presentations. Jury evaluation and closing ceremony.",
+      "Final Round presentations before the judging panel. Teams showcase their developed solutions, implementation strategy, and impact, followed by evaluation and result announcement.",
     side: "left",
   },
 ];

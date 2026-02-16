@@ -24,21 +24,21 @@ const Domains = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mt-20">
           {domains.map((domain) => (
             <div
               key={domain.id}
-              className="relative rounded-2xl p-[1px] bg-gradient-to-b from-[#6e56cf] to-[#c084fc] hover:scale-[1.03] transition-transform duration-300"
+              className="relative rounded-2xl p-[1px]  hover:scale-[1.03] transition-transform duration-300"
             >
               {/* Inner Card */}
-              <div className="relative h-full rounded-2xl bg-[#0F1026] p-6 flex flex-col justify-between">
+              <div className="relative h-full rounded-2xl bg-white/10 p-6 flex flex-col justify-between">
 
                 {/* Number Box (same as first card) */}
                 <div className="flex items-center gap-4">
                   {/* Number Badge */}
                   <div className="relative w-14 h-14 flex items-center justify-center">
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-[#6e56cf] to-[#c084fc]" />
-                    <div className="absolute inset-[1px] rounded-lg bg-[#0F1026]" />
+                    <div className="absolute inset-0 rounded-full " />
+                    <div className="absolute inset-[1px] rounded-full bg-[#fff]/40" />
                     <span className="relative z-10 text-xl font-bold text-white">
                       {String(domain.id).padStart(2, '0')}
                     </span>
