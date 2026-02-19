@@ -4,8 +4,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import { useGSAP } from '@gsap/react'
-import { Canvas } from '@react-three/fiber'
-import { Astronaut1 } from './Astronaut1'
 import Image from 'next/image'
 import { FaInstagram, FaYoutube, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
@@ -16,8 +14,6 @@ export default function Footer() {
   const footerRef = useRef(null)
   const contentRef = useRef(null)
 
-  const [mouse, setMouse] = useState({ x: 0, y: 0 })
-  const [scrollProgress, setScrollProgress] = useState(0)
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   )
@@ -31,21 +27,6 @@ export default function Footer() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  /* ---------------- Mouse ---------------- */
-  useEffect(() => {
-    if (isMobile) return
-
-    const handleMouseMove = (e) => {
-      setMouse({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: -(e.clientY / window.innerHeight) * 2 + 1,
-      })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [isMobile])
 
   /* ---------------- Scroll + Parallax ---------------- */
   useGSAP(() => {
@@ -65,7 +46,6 @@ export default function Footer() {
       scrub: true,
       onUpdate: (self) => {
         const p = self.progress
-        setScrollProgress(p)
 
         // Foreground content
         gsap.set(contentRef.current, {
@@ -111,21 +91,6 @@ export default function Footer() {
           className="object-cover opacity-30"
         />
       </div> */}
-
-      {/* ---------------- CANVAS ---------------- */}
-      {isMobile && (
-        <div className="footer-canvas" aria-hidden>
-          <Canvas camera={{ position: [0, 0, 15], fov: 50 }}>
-            <ambientLight intensity={1.4} />
-            <directionalLight position={[10, 10, 5]} intensity={2} />
-            <pointLight position={[-10, -10, 10]} intensity={0.5} />
-            <Astronaut1
-              mouse={mouse}
-              scrollProgress={scrollProgress}
-            />
-          </Canvas>
-        </div>
-      )}
 
       {/* ---------------- CONTENT ---------------- */}
       <div
