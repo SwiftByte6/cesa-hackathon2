@@ -42,27 +42,30 @@ const Hero = () => {
   useGSAP(() => {
     if (!backgroundRef.current) return
 
-    // Only enable animation on desktop/laptop (screen width >= 1024px)
-    const isDesktop = window.innerWidth >= 1024
+    const mm = gsap.matchMedia()
 
-    if (!isDesktop) return
+    mm.add('(min-width: 1024px) and (pointer: fine)', () => {
+      const handleMouseMove = (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 40
+        const y = -(e.clientY / window.innerHeight - 0.5) * 40
 
-    const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 40
-      const y = -(e.clientY / window.innerHeight - 0.5) * 40
-      
-      gsap.to(backgroundRef.current, {
-        x: x,
-        y: y,
-        duration: 0.8,
-        ease: 'power2.out'
-      })
-    }
+        gsap.to(backgroundRef.current, {
+          x: x,
+          y: y,
+          duration: 0.8,
+          ease: 'power2.out'
+        })
+      }
 
-    window.addEventListener('mousemove', handleMouseMove)
-    
+      window.addEventListener('mousemove', handleMouseMove)
+
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove)
+      }
+    })
+
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
+      mm.revert()
     }
   }, [])
   return (

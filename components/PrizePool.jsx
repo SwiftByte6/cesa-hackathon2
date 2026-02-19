@@ -24,26 +24,26 @@ const PrizePool = () => {
       <div className="max-w-4xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-3 items-end gap-10 text-center">
         <div className="space-y-2">
           <p className="text-xs uppercase text-gray-300">1st Runner-Up</p>
-          <p className="text-3xl md:text-4xl font-extrabold">₹7,000</p>
+          <p className="text-3xl md:text-4xl font-extrabold">₹8,000</p>
         </div>
 
         <div className="space-y-2">
           <p className="text-xs uppercase text-gray-300">Winner</p>
-          <p className="text-4xl md:text-6xl font-extrabold">₹10,000</p>
+          <p className="text-4xl md:text-6xl font-extrabold">₹15,000</p>
         </div>
 
         <div className="space-y-2">
           <p className="text-xs uppercase text-gray-300">2nd Runner-Up</p>
-          <p className="text-3xl md:text-4xl font-extrabold">₹3,000</p>
+          <p className="text-3xl md:text-4xl font-extrabold">₹5,000</p>
         </div>
       </div>
 
       <div className="max-w-3xl mx-auto mt-16">
         <div className="rounded-2xl border-2 border-white/70 bg-white/5 backdrop-blur-sm p-8 text-center space-y-3">
-          <p className="text-lg md:text-xl font-semibold">Special Sponsor Award</p>
-          <p className="text-2xl md:text-3xl font-bold">₹1,000</p>
+          <p className="text-lg md:text-xl font-semibold">Special Goodies</p>
+          <p className="text-2xl md:text-3xl font-bold">Swag & Gear</p>
           <p className="text-sm md:text-base text-gray-300">
-            Awarded to the best project based on a sponsor-provided problem statement (if applicable).
+            Exclusive hackathon goodies and items for the winning team.
           </p>
         </div>
       </div>

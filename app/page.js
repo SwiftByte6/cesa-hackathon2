@@ -225,7 +225,7 @@ export default function Home() {
             {/* 🐉 Right Deco */}
             <div
               ref={rightDecoRef}
-              className="absolute right-0 top-[95%] md:top-[90%] w-[400px] md:w-[600px] opacity-80 pointer-events-none z-20 transform-gpu"
+              className="absolute right-0 top-[95%] md:top-[97%] w-[400px] md:w-[600px] opacity-80 pointer-events-none z-20 transform-gpu"
             >
               <Image
                 src="/decoright.png"
