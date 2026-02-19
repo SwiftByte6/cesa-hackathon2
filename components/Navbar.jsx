@@ -93,7 +93,7 @@ const Navbar = () => {
             key={link.name}
             href={link.href}
             onClick={() => setIsOpen(false)}
-            className={`text-white text-4xl font-extrabold uppercase tracking-wider mb-8 transition-all duration-500 ${
+            className={`text-white text-3xl sm:text-4xl font-extrabold uppercase tracking-wider mb-8 transition-all duration-500 text-center leading-tight px-6 max-w-[90vw] ${
               isOpen
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-10'

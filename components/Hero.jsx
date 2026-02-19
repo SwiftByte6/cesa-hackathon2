@@ -6,8 +6,11 @@ import { FaArrowRight } from 'react-icons/fa6'
 import { HiDownload } from 'react-icons/hi'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const Hero = () => {
+
+  gsap.registerPlugin(ScrollTrigger)
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -17,6 +20,12 @@ const Hero = () => {
   })
 
   const backgroundRef = useRef(null)
+  const sectionRef = useRef(null)
+  const eyebrowRef = useRef(null)
+  const titleRef = useRef(null)
+  const subRef = useRef(null)
+  const countdownRef = useRef(null)
+  const ctaRef = useRef(null)
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -68,8 +77,38 @@ const Hero = () => {
       mm.revert()
     }
   }, [])
+
+  useGSAP(() => {
+    if (!sectionRef.current) return
+
+    const reduceMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (reduceMotion) return
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+          once: true,
+        },
+      })
+      .from(
+        [eyebrowRef.current, titleRef.current, subRef.current, countdownRef.current, ctaRef.current],
+        {
+          autoAlpha: 0,
+          y: 24,
+          filter: 'blur(8px)',
+          duration: 0.6,
+          stagger: 0.12,
+          ease: 'power2.out',
+        }
+      )
+  }, [])
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black">
+    <section ref={sectionRef} className="relative min-h-screen w-full overflow-hidden bg-black">
 
       {/* 🌌 Background Full 100vw */}
       <div
@@ -91,15 +130,15 @@ const Hero = () => {
       {/* 🧠 Content */}
       <div className="relative z-20 top-10 md:top-0 flex flex-col items-center justify-center text-center px-6 min-h-screen">
 
-        <h3 className="text-white/70 tracking-widest mb-3">
+        <h3 ref={eyebrowRef} className="text-white/70 tracking-widest mb-3">
           Forge. Code. Conquer.
         </h3>
 
-        <h1 className="md:text-[7rem] text-[2rem] font-extrabold tracking-wide text-white">
+        <h1 ref={titleRef} className="md:text-[7rem] text-[2rem] font-extrabold tracking-wide text-white">
           HACKFEST: INNOV8 TMRW
         </h1>
 
-        <div className="mt-4">
+        <div ref={subRef} className="mt-4">
           <h2 className="tracking-widest text-sm text-white/80">
             BUILD BEYOND INFINITY
           </h2>
@@ -109,7 +148,7 @@ const Hero = () => {
         </div>
 
         {/* ⏳ Countdown */}
-        <div className="mt-12 flex gap-2 md:gap-8 justify-center f">
+        <div ref={countdownRef} className="mt-12 flex gap-2 md:gap-8 justify-center f">
           {[
             { label: 'Days', value: timeLeft.days },
             { label: 'HRS', value: timeLeft.hours },
@@ -129,9 +168,10 @@ const Hero = () => {
         </div>
 
         {/* 🎯 CTAs */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div ref={ctaRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
 
           <button
+            onClick={() => window.open('https://unstop.com/o/4xQh9il?lb=v79lZ29X&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Nymzoplg97408', '_blank')}
             className="
     relative overflow-hidden group
     bg-white text-black font-bold
@@ -161,6 +201,14 @@ const Hero = () => {
 
 
           <button
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = '/broshure.pdf';
+              link.download = 'HACKFEST-Brochure.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
             className="
               border border-white/30 text-white cursor-pointer font-medium
               px-8 py-4
