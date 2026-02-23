@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { FaArrowRight } from 'react-icons/fa'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,9 +13,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Domains', href: '#domains' },
     { name: 'Event-Flow', href: '#event-flow' },
-    { name: 'Prize-Pool', href: '#prize-pool' },
-    { name: 'Rules & Eligibility', href: '#rules' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Team', href: '/team' },
   ]
 
   return (
@@ -41,10 +40,18 @@ const Navbar = () => {
       href={link.href}
       className="relative group text-sm font-medium tracking-wide"
     >
-      {/* Text with left-to-right color fill */}
-      <span className="relative z-10 block text-white transition-colors duration-300 group-hover:text-[#FFB86A]">
-        {link.name}
-      </span>
+      {/* Text Wrapper with Sliding Effect */}
+      <div className="relative h-5 overflow-hidden">
+        {/* First Text - slides up on hover */}
+        <div className="text-white transition-transform duration-300 ease-out group-hover:-translate-y-full">
+          {link.name}
+        </div>
+
+        {/* Second Text - slides in from below on hover */}
+        <div className="absolute inset-0 text-[#FFB86A] translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+          {link.name}
+        </div>
+      </div>
 
       {/* Animated Underline */}
       <span
@@ -54,6 +61,36 @@ const Navbar = () => {
       />
     </Link>
   ))}
+  
+  {/* Register Now Button */}
+  <button
+    onClick={() => window.open('https://unstop.com/o/4xQh9il?lb=v79lZ29X&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Nymzoplg97408', '_blank')}
+    className="
+    relative overflow-hidden group
+    bg-white text-black font-bold
+    px-4 py-2 rounded-full
+    flex items-center gap-2
+    transition-all duration-300 cursor-pointer hover:scale-105
+  "
+  >
+    {/* Black sliding background */}
+    <span
+      className="
+      absolute inset-0 bg-black
+      w-0 group-hover:w-full
+      transition-all duration-500 ease-in-out
+      z-0
+    "
+    />
+
+    {/* Text */}
+    <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+      Register Now
+    </span>
+
+    {/* Icon */}
+    <FaArrowRight className="relative z-10 text-lg group-hover:text-white transition-colors duration-300" />
+  </button>
 </div>
 
 
@@ -103,6 +140,46 @@ const Navbar = () => {
             {link.name}
           </Link>
         ))}
+        
+        {/* Register Now Button Mobile */}
+        <button
+          onClick={() => {
+            window.open('https://unstop.com/o/4xQh9il?lb=v79lZ29X&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Nymzoplg97408', '_blank')
+            setIsOpen(false)
+          }}
+          className={`
+          relative overflow-hidden group
+          bg-white text-black font-bold
+          px-8 py-4 rounded-full
+          flex items-center gap-2
+          transition-all duration-300 cursor-pointer hover:scale-105
+          mt-8
+          ${
+            isOpen
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-10'
+          }
+        `}
+          style={{ transitionDelay: `${navLinks.length * 100}ms` }}
+        >
+          {/* Black sliding background */}
+          <span
+            className="
+            absolute inset-0 bg-black
+            w-0 group-hover:w-full
+            transition-all duration-500 ease-in-out
+            z-0
+          "
+          />
+
+          {/* Text */}
+          <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+            Register Now
+          </span>
+
+          {/* Icon */}
+          <FaArrowRight className="relative z-10 text-lg group-hover:text-white transition-colors duration-300" />
+        </button>
       </div>
     </nav>
   )

@@ -15,6 +15,7 @@ import TimelineSection from '@/components/Timeline'
 import PrizePool from '@/components/PrizePool'
 import Rules from '@/components/Rules'
 import Footer from '@/components/Footer'
+import Venue from '@/components/Venue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -175,7 +176,7 @@ export default function Home() {
       {/* ☁️ Cloud 2 */}
       <div
         ref={cloud2Ref}
-        className="absolute -bottom-[20%] right-0 hidden md:block w-[60vw] h-[38%] z-10 pointer-events-none"
+        className="absolute -bottom-[20%] right-0 hidden md:block w-[60vw] h-[50%] z-10 pointer-events-none"
       >
         <Image
           src="/cloud2.png"
@@ -245,9 +246,10 @@ export default function Home() {
           <section id="rules" className="relative min-h-screen w-full">
             <Rules />
           </section>
-
+          {/* <Venue/> */}
         </div>
       </div>
+      
 
       <section id="contact">
         <Footer />
