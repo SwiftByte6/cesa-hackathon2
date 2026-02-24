@@ -2,45 +2,38 @@
 
 export const timeline = [
   {
-    date: "19th Feb",
-    title: "Hackathon Launch & Problem Statement Release",
+    date: "23rd Feb",
+    title: "Problem Statement(s) Release",
     description:
-      "Hackathon launch with problem statement release. Registration begins for all participants.",
+      "PS will release on unstop. Registration opens and teams begin ideation.",
     side: "left",
   },
   {
     date: "1st March",
-    title: "PPT Submission",
+    title: "Submission of PPT",
     description:
-      "PPT submission deadline. Submissions will be evaluated on innovation, feasibility, and clarity. Submission closes.",
+      "Submit the abstract or PPT in the prescribed format. Submission evaluated on innovation, feasibility and clarity.",
     side: "right",
   },
   {
     date: "2nd March",
     title: "Shortlisting Announcement",
     description:
-      "Shortlisted teams will be announced. Selected teams must pay Rs. 200 registration fee to proceed.",
+      "Shortlisted teams announced will be announced. Selected teams for Round 2 will receive new domain specific PS on 3RD MARCH and team need to pay 200 rupees.",
     side: "left",
-  },
-  {
-    date: "3rd March",
-    title: "New Problem Statements Release",
-    description:
-      "New Problem Statements will be released for shortlisted teams to work on for the next round.",
-    side: "right",
   },
   {
     date: "5th March",
     title: "Mentorship Day",
     description:
-      "Guidance on technical approach and feasibility. Teams receive mentorship to refine their solutions.",
-    side: "left",
+      "Mentoring sessions will be conducting online at 8 p.m. Guidance on technical approach and feasibility.",
+    side: "right",
   },
   {
     date: "7th March",
-    title: "Final Pitching & Evaluation",
+    title: "Final Pitching & Evaluation (Offline)",
     description:
-      "Final pitching and evaluation (offline, on-campus). Jury evaluation, winner declaration, and closing ceremony.",
-    side: "right",
+      "On-campus final presentations. Jury evaluation. Winner declaration and closing ceremony.",
+    side: "left",
   },
 ];

@@ -68,7 +68,7 @@ const baseText =
 
 function MarqueeTextBlock() {
   return (
-    <h1 className="px-8 text-[1.6rem] md:text-[4rem] font-extrabold tracking-widest whitespace-nowrap">
+    <h1 className="px-8 text-white text-[1.6rem] md:text-[4rem] font-extrabold tracking-widest whitespace-nowrap">
       {baseText}
     </h1>
   );
@@ -76,8 +76,8 @@ function MarqueeTextBlock() {
 
 function MarqueeDateBlock() {
   return (
-    <h1 className="px-8 text-[1.6rem] md:text-[4rem] font-extrabold tracking-widest uppercase whitespace-nowrap">
-      REGISTRATION BEGINS • JANUARY 10 •
+    <h1 className="px-8 text-white text-[1.6rem] md:text-[4rem] font-extrabold tracking-widest uppercase whitespace-nowrap">
+      REGISTRATION BEGINS • FEBRURARY 19 •
     </h1>
   );
 }

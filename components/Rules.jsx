@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Sponsership from './Sponsership'
+import Image from 'next/image'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -64,12 +65,12 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
   }, [isOpen])
 
   return (
-    <div className="py-4">
+    <div className="py-4  relative">
       <button
         type="button"
         aria-expanded={isOpen}
         onClick={() => onToggle(index)}
-        className="flex w-full items-center justify-between text-left gap-4 select-none hover:opacity-80 transition-opacity cursor-pointer"
+        className="flex w-full  items-center justify-between text-left gap-4 select-none hover:opacity-80 transition-opacity cursor-pointer"
       >
         <span className="text-sm md:text-base font-semibold flex-1">
           {item.question}
@@ -157,7 +158,7 @@ const Rules = () => {
           <h2 className="text-3xl md:text-[48px] font-extrabold">
             Frequently Asked Questions
           </h2>
-          <div className="divide-y divide-white/10 border-t border-white/10">
+          <div className="divide-y   divide-white/10 border-t border-white/10">
             {faqs.map((item, idx) => (
               <FAQItem
                 key={idx}
@@ -171,7 +172,7 @@ const Rules = () => {
         </div>
       </div>
 
-      {/* <Sponsership /> */}
+      <Sponsership />
     </section>
   )
 }

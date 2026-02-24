@@ -134,7 +134,7 @@ const Hero = () => {
           Forge. Code. Conquer.
         </h3>
 
-        <h1 ref={titleRef} className="md:text-[7rem] text-[2rem] font-extrabold tracking-wide text-white">
+        <h1 ref={titleRef} className="lg:text-[6rem] md:text-[5rem] text-[2rem] font-extrabold tracking-wide text-white">
           HACKFEST: INNOV8 TMRW
         </h1>
 

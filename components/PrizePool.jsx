@@ -4,7 +4,7 @@ import React from 'react'
 const PrizePool = () => {
   return (
     <section className="py-20 px-4 text-white  relative">
-      <div className="pointer-events-none absolute -bottom-6 -left-[5%] md:block md:-bottom-10 lg:-bottom-12 xl:-bottom-14">
+      <div className="pointer-events-none absolute -bottom-6 -left-[10%] md:-left-[5%] md:block md:-bottom-10 lg:-bottom-12 xl:-bottom-14 z-20">
         <Image
           src={'/prize.png'}
           width={560}
