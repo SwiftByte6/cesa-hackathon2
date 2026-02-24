@@ -5,10 +5,10 @@ import React from 'react'
 // import { Marquee } from './ui/marquee'
 
 const sponsors = [
-  // { src: "/LogoCesa 1.png", alt: "CESA Logo", width: 150, height: 80, grayscale: true },
+  { src: "/Sponser3.png", alt: "CESA Logo", width: 150, height: 80, grayscale: false },
   { src: "/EkotexLogo.png", alt: "Ekotex Logo", width: 150, height: 80, grayscale: false, link: "https://www.ekotexelectrificient.com/" },
-  { src: "/Sponser2.png", alt: "Sponsor Logo", width: 250, height: 80, grayscale: true },
-  { src: "/EkotexLogo.png", alt: "Ekotex Logo", width: 150, height: 80, grayscale: false, link: "https://www.ekotexelectrificient.com/" },
+  { src: "/Sponser2.png", alt: "Sponsor Logo", width: 250, height: 80, grayscale: false },
+  // { src: "/EkotexLogo.png", alt: "Ekotex Logo", width: 150, height: 80, grayscale: false, link: "https://www.ekotexelectrificient.com/" },
 ];
 
 // const firstRow = sponsors.slice(0, 2);
@@ -43,7 +43,7 @@ const Sponsership = () => {
         <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
       </div> */}
       
-      <div className="flex absolute bottom-0 right-0 justify-center items-center mx-auto mt-8">
+      {/* <div className="flex absolute bottom-0 right-0 justify-center items-center mx-auto mt-8">
        <Image 
         src={'/dragons.gif'} 
         alt="Dragons" 
@@ -51,7 +51,7 @@ const Sponsership = () => {
         height={200}
         className={`object-contain transition-all duration-300 `}
       />
-      </div>
+      </div> */}
     </div>
   )
 }

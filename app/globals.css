@@ -185,3 +185,218 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ════════════════════════════════════
+   TEAM SECTION
+   ════════════════════════════════════ */
+
+.team-section {
+  position: relative;
+  width: 100%;
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.team-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  padding: 0 1rem;
+}
+
+.team-label {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.team-heading {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.team-subheading {
+  color: #d1d5db;
+  font-size: 1.05rem;
+  max-width: 38rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── Scrolling Row ── */
+.team-scroll-row {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  /* Fade edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.team-scroll-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  will-change: transform;
+}
+
+/* ── Single Card ── */
+.team-card {
+  flex-shrink: 0;
+  width: 220px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+}
+
+/* ── Photo circle ── */
+.team-card__photo {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 184, 106, 0.15), rgba(99, 102, 241, 0.1));
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover .team-card__photo {
+  border-color: rgba(255, 184, 106, 0.7);
+  box-shadow:
+    0 0 25px rgba(255, 184, 106, 0.3),
+    0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.team-card__img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-card__img {
+  transform: scale(1.1);
+}
+
+/* ── Placeholder ── */
+.team-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 184, 106, 0.25), rgba(99, 102, 241, 0.15));
+}
+
+.team-card__placeholder span {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Social Overlay ── */
+.team-card__overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.team-card:hover .team-card__overlay {
+  opacity: 1;
+}
+
+.team-card__social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  transition: all 0.25s ease;
+  transform: translateY(8px);
+}
+
+.team-card:hover .team-card__social-btn {
+  transform: translateY(0);
+}
+
+.team-card__social-btn:hover {
+  background: #FFB86A;
+  border-color: #FFB86A;
+  color: #000;
+  box-shadow: 0 0 18px rgba(255, 184, 106, 0.5);
+}
+
+/* ── Name & Role ── */
+.team-card__name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  transition: color 0.3s ease;
+}
+
+.team-card:hover .team-card__name {
+  color: #FFB86A;
+}
+
+.team-card__role {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .team-card {
+    width: 180px;
+  }
+
+  .team-card__photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .team-scroll-track {
+    gap: 1.25rem;
+  }
+
+  .team-section {
+    padding: 3rem 0 4rem;
+  }
+}

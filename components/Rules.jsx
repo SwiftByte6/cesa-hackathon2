@@ -65,7 +65,7 @@ const FAQItem = ({ item, index, isOpen, onToggle }) => {
   }, [isOpen])
 
   return (
-    <div className="py-4 border-amber-200 relative">
+    <div className="py-4  relative">
       <button
         type="button"
         aria-expanded={isOpen}
